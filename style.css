@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Teko&display=swap');
+
+:root {
+  --black: rgb(27, 26, 32);
+  --white: rgb(244, 244, 245);
+  --path: path("M447.88 243.36C274.5 222.183 136 110 136 0H1000V517.996C1000 517.996 921.12 544.686 787.967 471.923C668.82 406.813 634.747 266.184 447.88 243.36Z");
+  --path-2: path("M274 286.5C201 179.5 171.5 21 0 0H1000V557.996C1000 557.996 844.5 405.5 658.5 424.5C472.5 443.5 347 393.5 274 286.5Z");
+  --path-reverse: path("M552.12 243.387C725.5 222.208 864 110.012 864 0H0V518.053C0 518.053 78.8798 544.746 212.033 471.975C331.18 406.858 365.253 266.214 552.12 243.387Z");
+  --path-reverse-2: path("M726 286.496C799 179.497 828.5 20.9997 1000 0H0V557.987C0 557.987 155.5 405.494 341.5 424.493C527.5 443.493 653 393.494 726 286.496Z");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto';
+  background-color: var(--white);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.banner h1 {
+  font-family: 'Teko';
+  font-weight: 400;
+  font-size: 144px;
+  line-height: 130px;
+  margin: 0;
+}
+.banner h2 {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 64px;
+  margin: 0;
+}
+.banner button {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 28px;
+  background-color: var(--black);
+  border: none;
+  border-radius: 500px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  padding: 5px 30px;
+  padding-right: 25px;
+  gap: 15px;
+  position: relative;
+}
+.banner button > svg {
+  transition: transform 120ms;
+}
+.banner button > svg path {
+  stroke: var(--white);
+}
+.banner button:hover > svg {
+  transform: translateX(3px);
+}
+.shiny-btn {
+  overflow: hidden;
+  background: linear-gradient(252deg, rgba(255,73,113,1) 0%, rgba(195,112,178,1) 32%, rgba(148,143,230,1) 64%, rgba(136,151,244,1) 100%, rgba(136,151,244,1) 50100%);
+}
+.shiny-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 0;
+  width: 200%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transition: transform 400ms cubic-bezier(0,.01,.42,.99);
+  background: linear-gradient(252deg, rgba(255,73,113,1) 0%, rgba(195,112,178,1) 16%, rgba(148,143,230,1) 32%, rgba(136,151,244,1) 50%, rgba(134,126,232,1) 66%, rgba(126,45,193,1) 100%, rgba(136,151,244,1) 50100%);
+}
+.shiny-btn:hover::before {
+  transform: translateX(50%);
+}
+.shiny-btn > * {
+  position: relative;
+  z-index: 1;
+}
+.shiny-btn:hover > svg {
+  transform: translateY(3px) !important;
+}
+
+.btn-box {
+  margin-top: 64px;
+  display: flex;
+  gap: 50px;
+}
+
+.banner-box {
+  padding-left: 90px;
+  padding-top: 250px;
+}
+.banner-box-miror {
+  top: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  z-index: 2;
+  animation: wave-reverse 30s infinite ease-in-out;
+  clip-path: var(--path-reverse);
+  transform: scaleX(-1);
+  color: var(--white);
+}
+.banner-box-miror .banner-box {
+  transform: scaleX(-1);
+}
+.banner-box-miror button {
+  background-color: var(--white);
+  color: var(--black);
+}
+.banner-box-miror button > svg path {
+  stroke: var(--black);
+}
+
+.banner {
+  position: relative;
+  display: flex;
+}
+
+.banner-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+  clip-path: var(--path);
+  width: 1000px;
+  animation: wave 30s infinite ease-in-out;
+}
+.banner-bg img {
+  width: 105%;
+}
+
+@keyframes wave {
+  0% {
+    clip-path: var(--path);
+  }
+  50% {
+    clip-path: var(--path-2);
+  }
+}
+@keyframes wave-reverse {
+  0% {
+    clip-path: var(--path-reverse);
+  }
+  50% {
+    clip-path: var(--path-reverse-2);
+  }
+}
